@@ -91,6 +91,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '', '../static').replace('\\','/'),)
 
 try:
-  from local_settings import *
+    from local_settings import *
 except Exception as e:
-  pass
+    pass
