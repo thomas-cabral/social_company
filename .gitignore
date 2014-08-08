@@ -23,6 +23,8 @@ var/
 
 venv
 staticfiles
+local_settings.py
+*sqlite3
 
 # PyInstaller
 #  Usually these files are written by a python script from a template 
