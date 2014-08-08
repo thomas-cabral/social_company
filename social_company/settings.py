@@ -20,7 +20,7 @@ SECRET_KEY = 'epq6@#72mxvt=6g+8&186f$*-t8tg0bg-liaukj-%0w5z)a8js'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 # Application definition
 
@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'south',
     'coming_soon',
+    'socialcompany',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -72,26 +73,27 @@ ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
 import os
-
-import dj_database_url
-DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-}
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
-)
+import dj_database_url
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '', '../templates').replace('\\','/'),)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = 'static'
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 try:
-    from local_settings import *
+  from local_settings import *
 except Exception as e:
-    pass
+  pass
