@@ -31,10 +31,23 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Internal Apps
+    'coming_soon',
+    'company',
+    # Third Party Apps
     'rest_framework',
     'south',
-    'coming_soon',
-    'socialcompany',
+    'guardian',
+)
+
+ANONYMOUS_USER_ID = None
+
+GUARDIAN_RENDER_403 = True
+GUARDIAN_TEMPLATE_403 = '403.html'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # default
+    'guardian.backends.ObjectPermissionBackend',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -11,6 +11,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('coming_soon.urls')),
+    url(r'^company/', include('company.urls')),
+    (r'^accounts/login/$', 'django.contrib.auth.views.login'),
 )
 
 if not settings.DEBUG:
