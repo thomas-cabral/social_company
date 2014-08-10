@@ -29,3 +29,24 @@ def company_detail(request, pk):
             template = 'company/secure_detail.html'
 
     return render_to_response(template, {'company': company_object})
+
+
+from rest_framework import generics
+from rest_framework import permissions
+from rest_framework import filters
+from .permissions import ViewPermissionOverride, DjangoObjectPermissionsOnly
+from .serializer import CompanySerializer
+
+
+class CompanyApi(generics.ListCreateAPIView):
+    permission_classes = (ViewPermissionOverride,)
+    filter_backends = (filters.DjangoObjectPermissionsFilter,)
+    serializer_class = CompanySerializer
+    model = Company
+
+
+class CompanyDetailApi(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (ViewPermissionOverride,)
+    filter_backends = (filters.DjangoObjectPermissionsFilter,)
+    serializer_class = CompanySerializer
+    model = Company
