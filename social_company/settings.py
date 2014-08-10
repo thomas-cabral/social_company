@@ -25,16 +25,32 @@ TEMPLATE_DEBUG = False
 # Application definition
 
 INSTALLED_APPS = (
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Internal Apps
+    'coming_soon',
+    'company',
+    # Third Party Apps
     'rest_framework',
     'south',
-    'coming_soon',
-    'socialcompany',
+    'guardian',
+    'crispy_forms',
+)
+
+ANONYMOUS_USER_ID = None
+
+GUARDIAN_RENDER_403 = True
+GUARDIAN_TEMPLATE_403 = '403.html'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # default
+    'guardian.backends.ObjectPermissionBackend',
 )
 
 MIDDLEWARE_CLASSES = (
