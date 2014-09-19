@@ -34,11 +34,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Internal Apps
+    'api',
     'coming_soon',
     'company',
     # Third Party Apps
     'rest_framework',
-    'south',
+    'rest_framework_swagger',
     'guardian',
     'crispy_forms',
 )
@@ -107,6 +108,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '', '../static').replace('\\','/'),)
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except Exception as e:
     pass
